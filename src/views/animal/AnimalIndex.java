@@ -6,6 +6,7 @@ package views.animal;
 
 import controller.BDTemporal;
 import javax.swing.JButton;
+import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 import model.Animal;
 import model.Especie;
@@ -38,6 +39,7 @@ public class AnimalIndex extends javax.swing.JInternalFrame {
             fila[6] = list.alimentado;
             model.addRow(fila);
         }
+        JInternalFrame test = new JInternalFrame();
     }
 
     /**

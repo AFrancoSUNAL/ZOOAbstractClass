@@ -4,6 +4,9 @@
  */
 package views;
 
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import views.animal.AnimalIndex;
 import views.especie.EspecieIndex;
@@ -20,6 +23,8 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        this.setTitle("Zoologico");
+        this.setLocationRelativeTo(null);
     }
 
     /**

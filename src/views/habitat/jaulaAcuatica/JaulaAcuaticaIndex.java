@@ -63,9 +63,17 @@ public class JaulaAcuaticaIndex extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Edad", "Peso", "Altura", "Genero", "Especie", "Alimentado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tbDatos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
