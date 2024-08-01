@@ -16,15 +16,15 @@ public abstract class Habitat {
         this.temperatura = temperatura;
         this.area = area;
         this.capacidad = capacidad;
+        this.animales = new ArrayList<>();
     }
     
     public abstract void ambiente();
     
     public void ingresar(Animal animal) {
         if (animales.size() >= capacidad){
-            System.out.println("No hay suficiente espacio");
             throw new UnsupportedOperationException("");
         }
-        System.out.println(animal.nombreAnimal + " ha sido ingresado");
+        animales.add(animal);
     }
 }

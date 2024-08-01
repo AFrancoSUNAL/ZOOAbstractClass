@@ -4,6 +4,11 @@
  */
 package views;
 
+import javax.swing.JInternalFrame;
+import views.animal.AnimalIndex;
+import views.especie.EspecieIndex;
+import views.habitat.HabitatMenu;
+
 /**
  *
  * @author OverK
@@ -26,22 +31,116 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btnPanel = new javax.swing.JPanel();
+        btnEspecies = new javax.swing.JButton();
+        btnAnimales = new javax.swing.JButton();
+        btnHabitats = new javax.swing.JButton();
+        menu = new javax.swing.JDesktopPane();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnEspecies.setText("Especies");
+        btnEspecies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEspeciesActionPerformed(evt);
+            }
+        });
+
+        btnAnimales.setText("Animales");
+        btnAnimales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnimalesActionPerformed(evt);
+            }
+        });
+
+        btnHabitats.setText("Habitats");
+        btnHabitats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHabitatsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnPanelLayout = new javax.swing.GroupLayout(btnPanel);
+        btnPanel.setLayout(btnPanelLayout);
+        btnPanelLayout.setHorizontalGroup(
+            btnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(btnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHabitats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(btnEspecies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        btnPanelLayout.setVerticalGroup(
+            btnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanelLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(btnEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnHabitats, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
+
+        getContentPane().add(btnPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 440));
+
+        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
+        menu.setLayout(menuLayout);
+        menuLayout.setHorizontalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        menuLayout.setVerticalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 500, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEspeciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspeciesActionPerformed
+        if(validFrame(new EspecieIndex())){
+            return;
+        }
+        EspecieIndex especieIndex = new EspecieIndex();
+        this.menu.add(especieIndex);
+        especieIndex.setVisible(true);
+    }//GEN-LAST:event_btnEspeciesActionPerformed
+
+    private void btnAnimalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalesActionPerformed
+        if(validFrame(new AnimalIndex())){
+            return;
+        }
+        AnimalIndex animalIndex = new AnimalIndex();
+        this.menu.add(animalIndex);
+        animalIndex.setVisible(true);
+    }//GEN-LAST:event_btnAnimalesActionPerformed
+
+    private void btnHabitatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabitatsActionPerformed
+        if(validFrame(new HabitatMenu())){
+            return;
+        }
+        HabitatMenu habitatIndex = new HabitatMenu();
+        this.menu.add(habitatIndex);
+        habitatIndex.setVisible(true);
+    }//GEN-LAST:event_btnHabitatsActionPerformed
+
+    private boolean validFrame(JInternalFrame frame) {
+        JInternalFrame[] frameList = this.menu.getAllFrames();
+        for(JInternalFrame element : frameList){
+            if(element.getClass().equals(frame.getClass())){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -78,5 +177,10 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnimales;
+    private javax.swing.JButton btnEspecies;
+    private javax.swing.JButton btnHabitats;
+    private javax.swing.JPanel btnPanel;
+    private javax.swing.JDesktopPane menu;
     // End of variables declaration//GEN-END:variables
 }

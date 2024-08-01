@@ -7,7 +7,7 @@ public class Animal {
     public float altura;
     public String genero;
     public Especie especie;
-    protected boolean alimentado;
+    public boolean alimentado;
 
     public Animal(String nombreAnimal, int edad, float peso, float altura, String genero, Especie especie) {
         this.nombreAnimal = nombreAnimal;
