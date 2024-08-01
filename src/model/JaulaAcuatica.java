@@ -7,8 +7,8 @@ public class JaulaAcuatica extends Habitat {
     }
 
     @Override
-    public void ambiente() {
-        System.out.println("ambiente terrestre");
+    public String ambiente() {
+        return "Acuatica";
     }
     
 }

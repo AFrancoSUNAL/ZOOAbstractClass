@@ -7,10 +7,8 @@ public class JaulaTerrestre extends Habitat{
     }
 
     @Override
-    public void ambiente() {
-        System.out.println("ambiente terrestre");
+    public String ambiente() {
+        return "Terrestre";
     }
-    
-    
     
 }

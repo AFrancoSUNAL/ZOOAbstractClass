@@ -7,7 +7,7 @@ public abstract class Habitat {
     public String ubicacion;
     public float temperatura;
     public float area;
-    protected int capacidad;
+    public int capacidad;
     public ArrayList<Animal> animales;
 
     public Habitat(String nombre, String ubicacion, float temperatura, float area, int capacidad) {
@@ -19,7 +19,7 @@ public abstract class Habitat {
         this.animales = new ArrayList<>();
     }
     
-    public abstract void ambiente();
+    public abstract String ambiente();
     
     public void ingresar(Animal animal) {
         if (animales.size() >= capacidad){

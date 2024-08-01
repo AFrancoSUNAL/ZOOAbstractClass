@@ -4,6 +4,16 @@
  */
 package views.habitat;
 
+import controller.BDTemporal;
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+import javax.swing.table.DefaultTableModel;
+import model.Habitat;
+import model.JaulaAcuatica;
+import model.JaulaTerrestre;
+import views.habitat.jaulaAcuatica.JaulaAcuaticaIndex;
+import views.habitat.jaulaTerrestre.JaulaTerrestreIndex;
+
 /**
  *
  * @author OverK
@@ -13,10 +23,28 @@ public class HabitatMenu extends javax.swing.JInternalFrame {
     /**
      * Creates new form HabitatIndex
      */
+    private JButton btnVer = new JButton("Abrir");
+    
     public HabitatMenu() {
         initComponents();
         this.setSize(500,440);
         this.setTitle("Habitats");
+        
+        BDTemporal bdTemporal = new BDTemporal();
+        Object fila[] = new Object[7];
+        
+        DefaultTableModel model = (DefaultTableModel) tbDatos.getModel();
+        for(Habitat list : bdTemporal.jaulas){
+            fila[0] = list.nombre;
+            fila[1] = list.ubicacion;
+            fila[2] = list.temperatura;
+            fila[3] = list.area;
+            fila[4] = list.capacidad;
+            fila[5] = list.animales.size();
+            fila[6] = list.ambiente();
+            model.addRow(fila);
+        }
+        
     }
 
     /**
@@ -42,14 +70,14 @@ public class HabitatMenu extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nombre", "Ubicacion", "Temperatura", "Area", "Capacidad", "Total"
+                "Nombre", "Ubicacion", "Temperatura", "Area", "Capacidad", "Total", "Ambiente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -58,6 +86,11 @@ public class HabitatMenu extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDatosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbDatos);
@@ -70,7 +103,7 @@ public class HabitatMenu extends javax.swing.JInternalFrame {
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,12 +124,46 @@ public class HabitatMenu extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosMouseClicked
+        
+        BDTemporal bdTemporal = new BDTemporal();
+
+        if(bdTemporal.jaulas.get(tbDatos.getSelectedRow()).getClass().equals(JaulaAcuatica.class)){
+            if(validFrame(new JaulaAcuaticaIndex())){
+                return;
+            }
+            JaulaAcuaticaIndex jaulaAcuaticaIndex = new JaulaAcuaticaIndex();
+            this.menu.add(jaulaAcuaticaIndex);
+            jaulaAcuaticaIndex.setVisible(true);
+            return;
+        }
+
+        if(bdTemporal.jaulas.get(tbDatos.getSelectedRow()).getClass().equals(JaulaTerrestre.class)){
+            if(validFrame(new JaulaTerrestreIndex())){
+                return;
+            }
+            JaulaTerrestreIndex jaulaTerrestreIndex = new JaulaTerrestreIndex();
+            this.menu.add(jaulaTerrestreIndex);
+            jaulaTerrestreIndex.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_tbDatosMouseClicked
+
+    private boolean validFrame(JInternalFrame frame) {
+        JInternalFrame[] frameList = this.menu.getAllFrames();
+        for(JInternalFrame element : frameList){
+            if(element.getClass().equals(frame.getClass())){
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

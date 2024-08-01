@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Animal;
 import model.Especie;
+import model.Habitat;
 import model.JaulaAcuatica;
 import model.JaulaTerrestre;
 
@@ -14,6 +15,7 @@ public class BDTemporal {
     public List<Animal> animales;
     public JaulaTerrestre jaulaTerrestre;
     public JaulaAcuatica jaulaAcuatica;
+    public List<Habitat> jaulas = new ArrayList<>();
     
     public BDTemporal() {
         especies = new ArrayList<>();
@@ -91,12 +93,15 @@ public class BDTemporal {
             jaulaTerrestre.ingresar(animal);
         }
         
-        jaulaAcuatica = new JaulaAcuatica("Jaula 1", "Bloque B", 28.2f, 400.0f, 60);
+        jaulaAcuatica = new JaulaAcuatica("Jaula 3", "Bloque B", 28.2f, 400.0f, 60);
         
         for(Animal animal : animalesAcuaticos){
             jaulaAcuatica.ingresar(animal);
         }
-    
+        
+        jaulas.add(jaulaTerrestre);
+        jaulas.add(jaulaAcuatica);
+
     }
 
 }

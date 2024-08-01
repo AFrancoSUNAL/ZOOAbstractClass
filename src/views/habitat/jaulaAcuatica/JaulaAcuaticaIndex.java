@@ -4,6 +4,12 @@
  */
 package views.habitat.jaulaAcuatica;
 
+import controller.BDTemporal;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import model.Animal;
+import model.Especie;
+
 /**
  *
  * @author OverK
@@ -15,6 +21,24 @@ public class JaulaAcuaticaIndex extends javax.swing.JInternalFrame {
      */
     public JaulaAcuaticaIndex() {
         initComponents();
+        this.setSize(456, 294);
+        this.setTitle("Jaula acuatica");
+        
+        BDTemporal bdTemporal = new BDTemporal();
+        Object fila[] = new Object[7];
+        
+        DefaultTableModel model = (DefaultTableModel) tbDatos.getModel();
+        for(Animal list : bdTemporal.jaulaAcuatica.animales){
+            fila[0] = list.nombreAnimal;
+            fila[1] = list.edad;
+            fila[2] = list.peso;
+            fila[3] = list.altura;
+            fila[4] = list.genero;
+            fila[5] = list.especie.nombreEspecie;
+            fila[6] = list.alimentado;
+            model.addRow(fila);
+        }
+        
     }
 
     /**
@@ -29,12 +53,14 @@ public class JaulaAcuaticaIndex extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDatos = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         tbDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -46,17 +72,17 @@ public class JaulaAcuaticaIndex extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
