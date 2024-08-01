@@ -4,18 +4,9 @@
  */
 package views;
 
-import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JInternalFrame;
-import views.menu.AlimentosMenu;
-import views.menu.AnimalesMenu;
-import views.menu.EspeciesMenu;
-import views.menu.HabitatsMenu;
-
 /**
  *
- * @author PC
+ * @author OverK
  */
 public class Dashboard extends javax.swing.JFrame {
 
@@ -24,8 +15,6 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle("Zoologico");
     }
 
     /**
@@ -37,135 +26,22 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new javax.swing.JDesktopPane();
-        buttonPanel = new javax.swing.JPanel();
-        btnEspecies = new javax.swing.JButton();
-        btnAnimales = new javax.swing.JButton();
-        btnAlimentos = new javax.swing.JButton();
-        btnHabitats = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
-
-        getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 650, 525));
-
-        btnEspecies.setText("Especies");
-        btnEspecies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEspeciesActionPerformed(evt);
-            }
-        });
-
-        btnAnimales.setText("Animales");
-        btnAnimales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnimalesActionPerformed(evt);
-            }
-        });
-
-        btnAlimentos.setText("Alimentos");
-        btnAlimentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlimentosActionPerformed(evt);
-            }
-        });
-
-        btnHabitats.setText("Habitats");
-        btnHabitats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHabitatsActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
-        buttonPanel.setLayout(buttonPanelLayout);
-        buttonPanelLayout.setHorizontalGroup(
-            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHabitats, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        buttonPanelLayout.setVerticalGroup(
-            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(btnEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addComponent(btnAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(btnHabitats, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(btnAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-        );
-
-        getContentPane().add(buttonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 525));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEspeciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspeciesActionPerformed
-        if(validateFrame(new EspeciesMenu())){
-            return;
-        }
-        EspeciesMenu especiesMenu = new EspeciesMenu();
-        menu.add(especiesMenu);
-        especiesMenu.setVisible(true);
-    }//GEN-LAST:event_btnEspeciesActionPerformed
-
-    private void btnAnimalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimalesActionPerformed
-        if(validateFrame(new AnimalesMenu())){
-            return;
-        }
-        AnimalesMenu animalesMenu = new AnimalesMenu();
-        menu.add(animalesMenu);
-        animalesMenu.setVisible(true);
-    }//GEN-LAST:event_btnAnimalesActionPerformed
-
-    private void btnHabitatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabitatsActionPerformed
-        if(validateFrame(new HabitatsMenu())){
-            return;
-        }
-        HabitatsMenu habitatsMenu = new HabitatsMenu();
-        menu.add(habitatsMenu);
-        habitatsMenu.setVisible(true);
-    }//GEN-LAST:event_btnHabitatsActionPerformed
-
-    private void btnAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlimentosActionPerformed
-        if(validateFrame(new AlimentosMenu())){
-            return;
-        }
-        AlimentosMenu alimentosMenu = new AlimentosMenu();
-        menu.add(alimentosMenu);
-        alimentosMenu.setVisible(true);
-    }//GEN-LAST:event_btnAlimentosActionPerformed
-
-    private boolean validateFrame(JInternalFrame frame) {
-        JInternalFrame[] frameList = menu.getAllFrames();
-        for(JInternalFrame element : frameList){
-            if (element.getClass().equals(frame.getClass())){
-                return true;
-            }
-        }
-        return false;
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -202,11 +78,5 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlimentos;
-    private javax.swing.JButton btnAnimales;
-    private javax.swing.JButton btnEspecies;
-    private javax.swing.JButton btnHabitats;
-    private javax.swing.JPanel buttonPanel;
-    private javax.swing.JDesktopPane menu;
     // End of variables declaration//GEN-END:variables
 }
